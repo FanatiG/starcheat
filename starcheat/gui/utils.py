@@ -144,6 +144,7 @@ def new_setup_dialog(parent):
         if not config_valid:
             logging.info("rebuild config and assets_db (config_version mismatch)")
             dialog = QMessageBox(parent)
+            dialog.setWindowModality(1)
             dialog.setWindowTitle("Config Out-of-date")
             dialog.setText("Your starcheat settings are outdated.")
             dialog.setInformativeText("A new config file and assets index will be created...")
@@ -171,6 +172,7 @@ def new_setup_dialog(parent):
     else:
         dialog = QMessageBox(parent)
         dialog.setWindowTitle("Starbound Folder Found")
+        dialog.setWindowModality(1)
         dialog.setText("Detected the following folder as the location of Starbound. Is this correct?")
         dialog.setInformativeText(starbound_folder)
         dialog.setStandardButtons(QMessageBox.No | QMessageBox.Yes)
@@ -242,6 +244,7 @@ def update_check(parent):
         if latest_tag.find("github.com/wizzomafizzo/starcheat/releases") >= 0:
             if not latest_tag.endswith("tag/" + config.STARCHEAT_VERSION_TAG):
                 dialog = QMessageBox(parent)
+                dialog.setWindowModality(1)
                 dialog.setWindowTitle("Outdated starcheat version")
                 dialog.setText("A new version of starcheat is available! Do you want to update now?")
                 dialog.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
